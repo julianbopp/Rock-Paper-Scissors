@@ -2,12 +2,13 @@ function getComputerChoice() {
     let r = Math.floor(Math.random() * 3);
 
     // 1 = Rock, 2 = Paper, 3 = Scissors
-    let choices = ["1", "2", "3"];
+    let choices = [1, 2, 3];
 
     return choices[r];
 }
 
 function playRound(playerSelection, computerSelection) {
+
     if (playerSelection == computerSelection) {
         return 0;
     }
@@ -31,3 +32,19 @@ function playRound(playerSelection, computerSelection) {
         return 1;
     }
 }
+
+function buttonClick(event) {
+    playRound(Number(event.srcElement.id),getComputerChoice());
+}
+
+function game() {
+    let playerSelectionButtons = document.querySelectorAll('.playerSelectionButton')
+    console.log(playerSelectionButtons)
+    playerSelectionButtons.forEach(button => {
+        let computerSelection = getComputerChoice();
+        button.addEventListener('click', buttonClick);
+    })
+
+}
+
+game()
