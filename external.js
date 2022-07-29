@@ -1,41 +1,42 @@
 function getComputerChoice() {
     let r = Math.floor(Math.random() * 3);
-    let choices = ["R", "P", "S"]
 
-    return choices[r]
+    // 1 = Rock, 2 = Paper, 3 = Scissors
+    let choices = ["1", "2", "3"];
+
+    return choices[r];
 }
 
 function playRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        return 0;
+    }
+
+    if (playerSelection == 1 && computerSelection == 2) {
+        return -1;
+    }
+    if (playerSelection == 1 && computerSelection == 3) {
+        return 1;
+    }
+    if (playerSelection == 2 && computerSelection == 1) {
+        return 1;
+    }
+    if (playerSelection == 2 && computerSelection == 3) {
+        return -1;
+    }
+    if (playerSelection == 3 && computerSelection == 1) {
+        return -1;
+    }
+    if (playerSelection == 3 && computerSelection == 2) {
+        return 1;
+    }
     playerSelection = playerSelection.charAt(0).toUpperCase()
 
     if (playerSelection === computerSelection) {
         return "Tie!";
     }
-
-    if (playerSelection === "R" && computerSelection === "S") {
-        return "You Win! Rock beats Scissors"
-    }
-
-    if (playerSelection === "R" && computerSelection === "P") {
-        return "You Lose! Paper beats Rock"
-    }
-
-    if (playerSelection === "P" && computerSelection === "R") {
-        return "You Win! Paper beats Rock"
-    }
-
-    if (playerSelection === "P" && computerSelection === "S") {
-        return "You Lose! Scissors beats Paper"
-    }
-
-    if (playerSelection === "S" && computerSelection === "P") {
-        return "You Win! Scissors beat Paper"
-    }
-
-    if (playerSelection === "S" && computerSelection === "R") {
-        return "You Lose! Rock beats Scissors"
-    }
 }
+
 
 function game() {
       let playerScore = 0
