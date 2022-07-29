@@ -34,7 +34,33 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function buttonClick(event) {
-    playRound(Number(event.srcElement.id),getComputerChoice());
+    let result = playRound(Number(event.srcElement.id),getComputerChoice());
+    updateScore(result);
+    displayWinner(result);
+}
+
+function displayWinner(result) {
+    let winner = document.querySelector('.winner')
+    if (result == 0) {
+        winner.textContent = "It's a Tie!"
+    }
+    if (result == 1) {
+        winner.textContent = "You Won!"
+    }
+    if (result == -1) {
+        winner.textContent = "Computer Won!"
+    }
+}
+
+function updateScore(result) {
+    let playerScore = document.querySelector('.player')
+    let computerScore = document.querySelector('.computer')
+    if (result == 1) {
+        playerScore.textContent = Number(playerScore.textContent) + 1
+    }
+    if (result == -1) {
+        computerScore.textContent = Number(computerScore.textContent) + 1
+    }
 }
 
 function game() {
